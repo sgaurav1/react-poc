@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const UseState = (props)=>{
 
@@ -7,6 +7,11 @@ const UseState = (props)=>{
     const changeCount = ()=>{
         setCount(count + 1)
     }
+
+    useEffect(()=>{
+        document.title = `You clicked ${count} times`
+        console.log('Clicked', count);
+    })
 
     return(
         <>

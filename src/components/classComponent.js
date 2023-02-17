@@ -32,6 +32,8 @@ class ClassComponent extends React.Component {
         this.setState({count: 0});
     }
 
+    
+
     render() {
         return (
             <>

@@ -5,7 +5,7 @@
   "testLibrary": "Testing Library",
   "component": {
     "default": {
-      "path": "src/common",
+      "path": "src/pages",
       "withStyle": true,
       "withTest": true,
       "withStory": true,

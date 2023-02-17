@@ -22,7 +22,7 @@ const FunctionAsProps = ({})=>{
     return (
         <>
         {/* It is useful when we need to update state of parent component from child component */}
-            <div>Function As Props</div> 
+            <div className="text-success">Function As Props</div> 
             <div>My Name from child: {name}</div> 
         <br/>
         <br/>

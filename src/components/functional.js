@@ -6,7 +6,7 @@ import React from "react";
 const Functioal = ({ data }) => {
     return (
         <>
-            <div>Hii Functioal Component {data[0].name} {data[0].designation}</div>
+            <div className="text-success">Hii Functioal Component {data[0].name} {data[0].designation}</div>
             <ul>
                 {data.map((item, i) => (
                     <li key={i}>{item.name}</li>

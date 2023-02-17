@@ -1,1 +1,12 @@
 .Footer {}
+.pagefooter{
+    width: 100%;
+    /* height: 40px; */
+    /* background-color: blueviolet; */
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+.bgthemedark{
+    background: #292d3e;
+}
