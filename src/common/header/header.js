@@ -46,6 +46,8 @@ class Header extends React.Component {
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
               <div className="navbar-nav">
                 <Link className="nav-item nav-link" to="/home">Home</Link>
+                <Link className="nav-item nav-link" to="/form">Form</Link>
+                <Link className="nav-item nav-link" to="/crudOperations">CRUD Operations</Link>
                 {conditionalLink}
                 {/* <Link className="nav-item nav-link" to="/profile">User</Link> */}
                 {/* <Link className="nav-item nav-link" to="#">Pricing</Link>

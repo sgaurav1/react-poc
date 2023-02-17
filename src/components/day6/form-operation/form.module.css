@@ -1,0 +1,15 @@
+.Form{}
+
+
+.formGroup{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.formGroup label{
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 15px;
+    display: block;
+    text-align: left;
+}
