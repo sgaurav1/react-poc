@@ -79,8 +79,6 @@ class Home extends React.Component {
     } else {
       this.isUpdateOn = <button className='btn btn-success' onClick={() => this.componentUpdateSetting('on')}>On Updating</button>
     }
-    // @ts-ignore
-    // <Profile />
     <Profile salary={10} name='gaurav' />
     if (this.state.type === 'users') {
       return (
