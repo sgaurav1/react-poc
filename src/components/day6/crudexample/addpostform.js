@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import styles from './list.module.css';
-import ReactDOM  from "react-dom";
+import ReactDOM from "react-dom";
 
 export default class AddPost extends React.Component {
     apiUrl = 'https://jsonplaceholder.typicode.com/posts';
@@ -19,7 +19,6 @@ export default class AddPost extends React.Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        console.log('getDerived props', state, props);
         if (props.editPostData.formState && props.editPostData.formState != 'addpost') {
             return { formState: props.editPostData.formState }
         }
@@ -29,16 +28,7 @@ export default class AddPost extends React.Component {
         // return null
     }
 
-    // shouldComponentUpdate(nextProps, nextState){
-    //     console.log('should update', nextProps, nextState);
-    //     if(nextProps.editPostData.data != this.state.postData){
-    //         return true;
-    //     }else{
-    //         return false
-    //     }
-    // }
     componentDidMount() {
-        console.log('Calling mount');
         if (this.state.formState === 'editPost') {
             this.setState(prevState => ({
                 postData: this.props.editPostData.data
@@ -55,12 +45,6 @@ export default class AddPost extends React.Component {
         }
     }
 
-    // componentDidUpdate(nextProps, nextState){
-    //     this.setState(prevState => ({
-    //         postData: this.props.editPostData.data
-    //     }))
-    // }
-
     handleChanges(event, type) {
         if (type === 'title') {
             this.setState(prevState => ({
@@ -75,13 +59,17 @@ export default class AddPost extends React.Component {
     }
 
     reset() {
-        this.setState({ title: '', body: '', userId: 1 })
+        this.setState(prevState => ({
+            postData: {
+                id: null,
+                title: '',
+                body: '',
+            }
+        }))
     }
 
     cancelUpdating() {
         this.props.editPostData.closeTheForm(true)
-        // @ts-ignore
-        // ReactDOM.unmountComponentAtNode(document.getElementById('addpostForm'));
         this.setState({
             postData: {
                 title: '',
@@ -90,11 +78,9 @@ export default class AddPost extends React.Component {
             },
             formState: 'addpost'
         })
-        console.log(this.state);
     }
 
     handleSubmit(event, actiontype) {
-        console.log('actiontype', actiontype);
         if (actiontype == 'ADD_POST') {
             const dataToSend = {
                 title: this.state.postData.title,
@@ -103,10 +89,20 @@ export default class AddPost extends React.Component {
             }
             axios.post('https://jsonplaceholder.typicode.com/posts', dataToSend).then((res) => {
                 console.log('post', res);
+                if(res){
+                    alert(`Added Item Id: ${res.data.id}, Title: ${res.data.title}, Body: ${res.data.body}`);
+                }
+            }).catch((e)=>{
+                alert(e)
             })
         } else {
             axios.put(`https://jsonplaceholder.typicode.com/posts/${this.state.postData.id}`, this.state.postData).then((res) => {
                 console.log('update', res);
+                if(res){
+                    alert(`Udated Item Id: ${res.data.id}, Title: ${res.data.title}, Body: ${res.data.body}`);
+                }
+            }).catch((e)=>{
+                alert(e);
             })
         }
 
@@ -114,7 +110,6 @@ export default class AddPost extends React.Component {
     }
 
     render() {
-        console.log('state', this.state);
         let heading = '';
         let buttonToPerformActio = null;
         if (this.state.formState === 'addpost') {
@@ -125,22 +120,21 @@ export default class AddPost extends React.Component {
             buttonToPerformActio = <><button className='btn btn-dark' type='button' onClick={(event) => this.handleSubmit(event, 'EDIT_POST')}>Save</button><button className='btn btn-dark ms-2' type='button' onClick={() => this.cancelUpdating()}>Cancel</button></>;
         }
         return (
-            <div className='col-md-5 mx-auto mb-3 addpostform'>
-                <div className='border p-3 shadow-lg'>
+            <div className='addpostform'>
+                <div className='px-3'>
                     <h5 className='text-center text-success mb-0'>{heading}</h5>
-                    <p className="text-info mb-3">Check response on console and network</p>
+                    <p className="text-warning mb-3 text-center">Check response on console and network</p>
                     <form>
                         <div className={styles.formGroup}>
                             <label>Post Title</label>
-                            <input type='text' className='form-control' placeholder='Enter name' name='title' value={this.state['postData'].title || ''} onChange={(event) => this.handleChanges(event, 'title')} />
+                            <input type='text' className='form-control' placeholder='Title' name='title' value={this.state['postData'].title || ''} onChange={(event) => this.handleChanges(event, 'title')} />
                         </div>
                         <div className={styles.formGroup}>
                             <label>Post Body</label>
-                            <textarea className='form-control' name='body' value={this.state['postData'].body || ''} onChange={(event) => this.handleChanges(event, 'body')}></textarea>
+                            <textarea className='form-control' name='Description' rows={4} value={this.state['postData'].body || ''} onChange={(event) => this.handleChanges(event, 'body')}></textarea>
                         </div>
                         <div className='d-flex justify-content-center'>
                             {buttonToPerformActio}
-
                         </div>
                     </form>
                 </div>

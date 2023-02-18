@@ -13,3 +13,16 @@
     display: block;
     text-align: left;
 }
+
+.showmodal{
+    display: block;
+    padding-left: 0;
+}
+
+.modalStyle{
+    padding-bottom: 0!important;
+    border: 0!important;
+}
+.nowrap{
+    white-space: nowrap;
+}
