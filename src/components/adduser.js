@@ -64,7 +64,7 @@ class ConnectedForm extends React.Component {
                         <div className="form-group mb-3">
                             <label className="mb-2">Gender</label>
                             <select className="form-control" name="gender" value={this.state.gender || ''} onChange={(event) => this.handleChanges(event, 'gender')}>
-                                <option selected disabled value=''>Select Gender</option>
+                                <option disabled value=''>Select Gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>

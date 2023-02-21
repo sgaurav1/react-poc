@@ -1,2 +1,10 @@
 export const ADD_ARTICLE = 'ADD_ARTICLE';
 export const ADD_USER = 'ADD_USER';
+export const USER_LOADING = 'USER_LOADING';
+export const COUNTE_INCREMENT = 'COUNTER_INCREMENT';
+export const COUNTE_DECREMENT = 'COUNTER_DECREMENT';
+export const COUNTE_RESET = 'COUNTER_RESET';
+export const POSTS_LOADED = 'POSTS_LOADED';
+export const POST_LOADING = 'POST_LOADING';
+
+

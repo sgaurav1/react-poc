@@ -30,6 +30,7 @@ class ConnectedForm extends React.Component {
                 <div className="col-lg-4 shadwo mx-auto">
                     <form>
                         <div className="form-group">
+                            <label className="mb-3">Add Item on list</label>
                             <input type="text" className="form-control" name="name" value={this.state.name || ''} onChange={(event)=> this.handleChanges(event)} />
                         </div>
                         <button className="btn btn-dark mt-4 mx-auto d-block" type="button" onClick={(event)=> this.handleSubmit(event)}>Add</button>

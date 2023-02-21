@@ -16,7 +16,8 @@ const ConnectedList = (props)=>{
 
 
 const mapStateTProps = state=> {
-    return {articles: state.articles}
+    console.log('state', state);
+    return {articles: state.addUserandArticleReducer.articles}
 }
 
 const List = connect(mapStateTProps, null)(ConnectedList);

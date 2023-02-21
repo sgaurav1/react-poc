@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 
 
 const ConnectUser = (props) => {
-    console.log('props', props);
+    console.log('props users', props);
     return (
         <>
         <h5 className="text-center text-info mt-5">Employee List</h5>
+        {props.isLoading && <h5 className="text-center text-info mt-5">Employee List Loading</h5>}
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -35,11 +36,14 @@ const ConnectUser = (props) => {
     )
 }
 
-const mapPropsToState = state=> {
-    console.log(state);
-    return {users: state.users}
+const mapStateToProps = state=> {
+    console.log(state, state.addUserandArticleReducer.users);
+    return {
+        users: state.addUserandArticleReducer.users,
+        isLoading: state.addUserandArticleReducer.isUserLoading
+    }
 }
 
-const UserList = connect(mapPropsToState, null)(ConnectUser);
+const UserList = connect(mapStateToProps)(ConnectUser);
 
 export default UserList;

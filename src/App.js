@@ -5,20 +5,27 @@ import List from './components/list';
 import Form from './components/form';
 import AddUserForm from './components/adduser';
 import UserList from './components/users';
+import Counter from './components/counter';
+import Post from './components/post';
 
 function App() {
   return (
     <div className='container py-4'>
-      {/* <div>
+      <div className='mb-4 pb-3 shadow bg-light p-4'>
         <h4 className='text-info'>Articles</h4>
         <List />
-      </div>
-      <div>
-        <h4 className='text-info'>Form</h4>
         <Form />
-      </div> */}
-      <AddUserForm />
-      <UserList />
+      </div>
+      <div className='mb-4 pb-3 border shadow p-4'>
+        <AddUserForm />
+        <UserList />
+      </div>
+      <div className='mb-4 pb-3 border-bottom bg-light'>
+        <Counter />
+      </div>
+      <div className='p-4 shadow bg-light'>
+        <Post />
+      </div>
     </div>
   );
 }
