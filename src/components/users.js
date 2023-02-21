@@ -25,6 +25,7 @@ const ConnectUser = (props) => {
                             <td>{item['name']}</td>
                             <td>{item['age']}</td>
                             <td>{item['gender']}</td>
+                            <td>{item['companyName']}</td>
                         </tr>)
                     )}
                 </tbody>
