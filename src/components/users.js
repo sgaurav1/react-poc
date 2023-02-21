@@ -15,6 +15,7 @@ const ConnectUser = (props) => {
                         <th>Name</th>
                         <th>Age</th>
                         <th>Gender</th>
+                        <th>Company</th>
                     </tr>
                 </thead>
                 <tbody>
