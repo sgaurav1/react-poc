@@ -33,14 +33,10 @@ class ConnectedForm extends React.Component {
     }
 
     handleSubmit(event){
-        console.log(this.state.name);
-        // const {id,name,designation,salary} = this.state;
-        // console.log(this.state);
-        debugger;
         this.props.users({'id': nextId++, ...this.state});
         event.preventDefault();
     }
-
+ 
 
     render() {
         return (
