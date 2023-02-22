@@ -7,11 +7,12 @@ import AddUserForm from './components/adduser';
 import UserList from './components/users';
 import Counter from './components/counter';
 import Post from './components/post';
+import Contact from './components/testing-cmps/contact/contact';
 
 function App() {
   return (
     <div className='container py-4'>
-      <div className='mb-4 pb-3 shadow bg-light p-4'>
+      {/* <div className='mb-4 pb-3 shadow bg-light p-4'>
         <h4 className='text-info'>Articles</h4>
         <List />
         <Form />
@@ -22,10 +23,11 @@ function App() {
       </div>
       <div className='mb-4 pb-3 border-bottom bg-light'>
         <Counter />
-      </div>
+      </div>*/}
       <div className='p-4 shadow bg-light'>
         <Post />
-      </div>
+      </div> 
+      <Contact phone={12345}/>
     </div>
   );
 }

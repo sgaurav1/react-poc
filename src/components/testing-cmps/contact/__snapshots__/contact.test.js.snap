@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The contact should render correclty it shoudl have number 1`] = `
+<div
+  class="container"
+  data-testid="Contact"
+>
+  <div
+    class="shadow p-3"
+  >
+    <h5
+      class="text-success text-center"
+      id="phone8888888888"
+    >
+      Conatcts 
+      8888888888
+    </h5>
+  </div>
+</div>
+`;
