@@ -68,7 +68,7 @@ export class ConnectPosts extends Component {
             }
             else {
                 this.handleClose();
-                alert('Post is updated');
+                alert('New post added successfully!');
             }
         });
         event.preventDefault();
@@ -127,10 +127,10 @@ export class ConnectPosts extends Component {
                         <table className="table table-bordered">
                             <thead>
                                 <tr>
-                                    <td>#</td>
-                                    <td>Title</td>
-                                    <td>Body</td>
-                                    <td>Actions</td>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Body</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
