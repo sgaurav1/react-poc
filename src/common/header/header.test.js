@@ -1,12 +1,12 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Posts from './posts';
+import Header from './header';
 
-describe('<Login />', () => {
+describe('<Header />', () => {
   test('it should mount', () => {
-    render(<Posts />);
-    const login = screen.getByTestId('Posts');
+    render(<Header />);
+    const login = screen.getByTestId('Header');
     expect(login).toBeInTheDocument();
   });
 });

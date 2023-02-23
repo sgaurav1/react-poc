@@ -4,7 +4,7 @@ import styles from './header.module.css';
 const Header = () => {
     return (
         <>
-            <div className={styles.bgthemedark}>
+            <div className={styles.bgthemedark} data-testid="Header">
                 <div className='container-fluid'>
                     <nav className="navbar navbar-expand-lg navbar-dark">
                         <a className="navbar-brand" href="#">REACT POC</a>

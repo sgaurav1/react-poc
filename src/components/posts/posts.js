@@ -26,7 +26,7 @@ export class ConnectPosts extends Component {
     componentDidMount() {
         this.props.getPosts();
     }
-    
+
     openModal() {
         this.setState({ modalShow: true });
     }
@@ -117,7 +117,7 @@ export class ConnectPosts extends Component {
         return (
             <>
                 <Layout>
-                    <div className="container py-4">
+                    <div className="container py-4" data-testid="Posts">
                         <div className="d-flex">
                             <h4 className="text-success text-center">Posts</h4>
                             <button className="btn btn-success ms-auto mb-3" onClick={() => this.openModal()}>Add Post</button>

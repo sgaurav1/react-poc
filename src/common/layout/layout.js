@@ -8,7 +8,7 @@ const Layout = ({children}) => {
   return (
     <>
     <Header />
-      <main className={styles.mainwrapper}>{children}</main>
+      <main className={styles.mainwrapper} data-testid="Layout">{children}</main>
     <Footer />
   </>
   )
