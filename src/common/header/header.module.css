@@ -1,4 +1,11 @@
 .Header {}
 .bgthemedark{
-    background: #292d3e;
+    /* background: #292d3e; */
+    padding-top: 30px;
+}
+
+@media (max-width: 576px){
+   .bgthemedark{
+    padding-top: 0;
+   } 
 }

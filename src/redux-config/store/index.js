@@ -1,10 +1,10 @@
 // import {createStore} from 'react-redux';
 import { createStore, applyMiddleware } from '@reduxjs/toolkit';
-import postReducer from '../reducers/index';
+import rootreducer from '../reducers/index';
 import thunk from 'redux-thunk';
 
 const store = createStore(
-    postReducer, 
+    rootreducer, 
     applyMiddleware(thunk)
 );
 

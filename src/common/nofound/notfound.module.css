@@ -8,7 +8,6 @@
     background-color: #fff;
     border-radius: 10px;
     min-height: calc(100vh - 128px);
-    position: relative;
 }
 
 @media (max-width: 576px) {
