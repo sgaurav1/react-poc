@@ -1,4 +1,4 @@
-import { POSTS_LOADING, POSTS_LOADED, ADD_POST, EDIT_POST, DELETE_POST, ERROR, USER_LOGIN, USER_LOGOUT, USER_LOGGEDIN, USER_NOTLOGGEDIN, USER_DETAIL, USERS_LIST } from "../constants/actions-types";
+import { POSTS_LOADING, POSTS_LOADED, ADD_POST, EDIT_POST, DELETE_POST, ERROR, USER_LOGIN, USER_LOGOUT, USER_LOGGEDIN, USER_NOTLOGGEDIN, USER_DETAIL, USERS_LIST, OPEN_SIDEBAR } from "../constants/actions-types";
 import store from "../store";
 import { ENDPOINTS } from "../../utilities/config";
 import axios from "axios";
@@ -34,10 +34,8 @@ export function checkIsUserLogedIn() {
 export function userLogin(authCredentials) {
     return function (_dispatch) {
         return axios.post(ENDPOINTS.auth, authCredentials).then(async(res) => {
-            console.log('res', res);
             if (res) {
                 let user = await getUserData();
-                console.log('user, data ', user);
                 store.dispatch({ type: USER_LOGIN, payload: res.data, userData:user });
             }
             
@@ -55,7 +53,6 @@ export function userLogout() {
 export function getUserByID(userId) {
     return function (_dispatch) {
         return axios.get(`${ENDPOINTS.singleUser}/${userId}`).then((res) => {
-            console.log('user detail', res);
             store.dispatch({ type: USER_DETAIL, payload: res.data });
         })
     }
@@ -64,7 +61,6 @@ export function getUserByID(userId) {
 export function getUserList(){
     return function(_dispatch){
         return axios.get(`${ENDPOINTS.userList}`).then((res)=>{
-            console.log('userList', res);
             store.dispatch({type: USERS_LIST, payload: res.data})
         })
     }
@@ -86,6 +82,16 @@ export function getPosts() {
         });
     }
 }
+
+// ==========Sidebar open and close action 
+export function openCloseSidebar(stateusToSet){
+    // debugger;
+    return function(_dispatch){
+        store.dispatch({type: OPEN_SIDEBAR, payload: stateusToSet});
+    }
+}
+
+
 
 export function addPost(data) {
     return function (_dispatch) {

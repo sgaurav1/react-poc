@@ -29,11 +29,11 @@ const UsersDetail = (props) => {
             <div className="content-head pt-3 pb-2 borderw-2">
                 <h6 className="text-secondary">User Details</h6>
             </div>
-            <div className="details-wrp d-flex pt-5">
-                <div className="imgbox shadow">
+            <div className="details-wrp d-lg-flex pt-5">
+                <div className="imgbox shadow mx-auto ms-lg-0 me-lg-0">
                     <img src={detailsForm.avatar} className="img-responsive"/>
                 </div>
-                <div className="formwrp col-md-6 px-3 ps-5">
+                <div className="formwrp col-lg-8 col-xl-6 px-3 ps-lg-5 pt-4 pt-lg-0 pb-5 pb-lg-4">
                     <form>
                         <div className="form-group d-flex align-items-center mb-3">
                             <label className="col-4 col-md-3">First Name</label>

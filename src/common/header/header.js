@@ -1,34 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { getUserByID } from "../../redux-config/actions";
+import { Link, useLocation } from "react-router-dom";
+import { openCloseSidebar } from "../../redux-config/actions";
 import styles from './header.module.css';
-
 
 export const Header = (props) => {
 
-//    function getUserDetails(){
-//         props.getUser(4);
-//         console.log('props', props);
-//     }
-//     // getUserDetails();
+    // props.openCloseSidebar(false);
+
+    function openSidebar() {
+        const status = !props.sidebarOpenStatus;
+        props.openCloseSidebar(status);
+    }
+
     return (
         <>
             <div className={styles.bgthemedark} data-testid="Header">
                 <div className='container'>
                     <nav className="navbar navbar-expand-lg navbar-dark">
-                        <a className="navbar-brand" href="#"><span className="badge bg-primary logotext">Yms</span></a>
-                        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button> */}
+                        <Link to='/' className="navbar-brand"><span className="badge bg-primary logotext">Yms</span></Link>
                         <div className="navbar-collapse justify-content-end flex-fill" id="navbarNavAltMarkup">
                             <div className="navbar-nav d-flex flex-row mdevice-w100 justify-content-end">
                                 <div className="rightnav-ele"><i className="bi bi-search"></i></div>
                                 <div className="rightnav-ele"><i className="bi bi-bell"></i></div>
                                 <div className="rightnav-ele"><i className="bi bi-person"></i></div>
-                                {/* <Link className="nav-item nav-link" to="/posts">Posts</Link> */}
-                                {/* <Link className="nav-item nav-link" to="#">Pricing</Link>
-            <Link className="nav-item nav-link disabled" to="#">Disabled</Link> */}
+                                <div className="rightnav-ele d-md-none" onClick={() => openSidebar()}>{!props.sidebarOpenStatus && <i className="bi bi-list"></i>} {props.sidebarOpenStatus && <i className="bi bi-x-lg"></i>}</div>
                             </div>
                         </div>
                     </nav>
@@ -39,17 +35,16 @@ export const Header = (props) => {
     )
 }
 
-function mapStateToProps(state){
-    console.log('state of header: ', state);
+function mapStateToProps(state) {
     return {
-        userDetail: state.userOperationsReducer.loggedUser
+        sidebarOpenStatus: state.commonReducer.isSideBarOpen
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return{
-        getUser: (userId)=> dispatch(getUserByID(userId))
+function mapDispatchToProps(dispatch) {
+    return {
+        openCloseSidebar: (status) => dispatch(openCloseSidebar(status))
     }
 }
 
-export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

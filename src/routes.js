@@ -6,7 +6,7 @@ import Login from "./auth/login/login";
 import NotFound from "./common/nofound/notfound";
 import UserList from "./components/user-list/userlist";
 import { connect } from "react-redux";
-import { checkIsUserLogedIn } from "./redux-config/actions";
+import { checkIsUserLogedIn, openCloseSidebar } from "./redux-config/actions";
 // import history from "./history";
 import UsersDetail from "./components/user-details/user-detsils";
 import AddNewUser from "./components/add-user/addUser";
@@ -54,7 +54,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        checkIsUserLogedIn: () => dispatch(checkIsUserLogedIn())
+        checkIsUserLogedIn: () => dispatch(checkIsUserLogedIn()),
+        // closeSideBarIfOpened: ()=> dispatch(openCloseSidebar(false))
     }
 }
 

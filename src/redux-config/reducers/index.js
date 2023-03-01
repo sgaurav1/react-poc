@@ -2,6 +2,7 @@ import { ADD_POST, EDIT_POST, ERROR, POSTS_LOADED, POSTS_LOADING } from "../cons
 import { combineReducers } from "redux";
 import authReducer from "./auth-reducer";
 import userOperationsReducer from "./userdata.js";
+import commonReducer from "./common-reducer/commonReducer";
 const initialState = {
     posts: [],
     isLoading: true,
@@ -51,6 +52,6 @@ function postReducer(state = initialState, action){
 
 // ========= Combiing reducers 
 
-const rootReducer = combineReducers({authReducer: authReducer, userOperationsReducer,postReducer: postReducer})
+const rootReducer = combineReducers({authReducer: authReducer, userOperationsReducer,postReducer: postReducer, commonReducer})
 
 export default rootReducer;

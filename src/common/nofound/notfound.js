@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import { useLocation } from 'react-router';
 import Header from '../header/header';
 import Layout from '../layout/layout';
@@ -15,6 +16,7 @@ const NotFound = () => {
                     <div className='mx-auto text-center'>
                         <h1 className='font-bold'>404</h1>
                         <h6>Not Found</h6>
+                        <Link to={'/'} className='btn btn-primary'>Back</Link>
                     </div>
                 </div>
 

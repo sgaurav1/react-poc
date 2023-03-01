@@ -8,14 +8,16 @@ import { useForm } from 'react-hook-form';
 const Login = (props) => {
     let navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [isLoading, setLoadingStatus] = useState(false);
     const [errorMessage, setError] = useState(null);
 
     const onSubmit = (formData) => {
-        console.log(formData);
+        setLoadingStatus(true);
         props.userLogin(formData).then(() => {
-            console.log(props);
             navigate('/userList');
+            setLoadingStatus(false);
         }).catch((e) => {
+            setLoadingStatus(false);
             setError(e.message);
         });
     }
@@ -28,6 +30,7 @@ const Login = (props) => {
                         <div className={styles.loinform}>
                             <p className="text-center mb-4"><span className="badge bg-primary logotext">Yms</span></p>
                             {errorMessage && <p className="text-danger text-center">{errorMessage}</p>}
+                            {isLoading && <p className="text-info text-center">Working on please wait...</p>}
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="form-group mb-3">
                                     <input type="text" className="form-control" defaultValue="eve.holt@reqres.in" {...register("email", { required: true })} />
