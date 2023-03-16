@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styles from './layout.module.css';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import { UserContetxt } from '../../auth/login/login';
 
-const Layout = ({ children }) => {
-  // console.log('children', children);
+const Layout = (props) => {
+  const loginSt = useContext(UserContetxt)
+  console.log(loginSt);
+  console.log('children', props);
   return (
     (
       <>
-        <Header isLoggedIn={children.props['data-login']} />
+        <Header isLoggedIn={loginSt.checkLoggedIn}/>
         <main className={styles.mainwrapper}>
-          {children}
+          {props.children}
         </main>
         <Footer />
       </>

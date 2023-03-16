@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styles from './login.module.css';
 import Header from '../../common/header/header';
@@ -7,7 +7,10 @@ import Layout from '../../common/layout/layout';
 import { useNavigate } from 'react-router-dom';
 import MessageBox from '../../common/messageox/messagebox';
 
+export const UserContetxt = createContext({ checkLoggedIn: false })
+
 const Login = () => {
+  const loginSt = useContext(UserContetxt);
   let navigate = useNavigate();
   const [isLoggedIn, setLoggedInSate] = useState(false);
   const signin = () => {
@@ -37,14 +40,16 @@ const Login = () => {
 
 
   return (
-    <Layout>
-      <div className={styles.Login + ' ' + 'py-4'} data-testid="Login" data-login={isLoggedIn}>
-        <div className='col-md-5 mx-auto'>
-          {messageBox}
+    <UserContetxt.Provider value={{checkLoggedIn: isLoggedIn}}>
+      <Layout>
+        <div className={styles.Login + ' ' + 'py-4'} data-testid="Login" data-login={isLoggedIn}>
+          <div className='col-md-5 mx-auto'>
+            {messageBox}
+          </div>
+          {viewState}
         </div>
-        {viewState}
-      </div>
-    </Layout>
+      </Layout>
+    </UserContetxt.Provider>
   )
 }
 
@@ -61,25 +66,25 @@ class LoginWithForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChanges(event, type){
-    if(type === 'input'){
+  handleChanges(event, type) {
+    if (type === 'input') {
       this.setState({
         userName: event.target.value
       })
     }
-    if(type === 'email'){
+    if (type === 'email') {
       this.setState({
         email: event.target.value
       })
     }
-    if(type === 'password'){
+    if (type === 'password') {
       this.setState({
         password: event.target.value
       })
     }
   }
 
-  handleSubmit(event){
+  handleSubmit(event) {
     console.log(this.state);
     event.preventDefault();
   }
@@ -95,18 +100,18 @@ class LoginWithForm extends React.Component {
                 <form>
                   <div className={styles.formGroup}>
                     <label>User Name</label>
-                    <input type='text' className='form-control' placeholder='Enter Email' name='userName' value={this.state.userName || ''} onChange={(event)=> this.handleChanges(event, 'input')} />
+                    <input type='text' className='form-control' placeholder='Enter Email' name='userName' value={this.state.userName || ''} onChange={(event) => this.handleChanges(event, 'input')} />
                   </div>
                   <div className={styles.formGroup}>
                     <label>Email</label>
-                    <input type='text' className='form-control' placeholder='Enter Email' name='email' value={this.state.email || ''} onChange={(event)=> this.handleChanges(event, 'email')} />
+                    <input type='text' className='form-control' placeholder='Enter Email' name='email' value={this.state.email || ''} onChange={(event) => this.handleChanges(event, 'email')} />
                   </div>
                   <div className={styles.formGroup}>
                     <label>Password</label>
-                    <input type='password' className='form-control' placeholder='Enter password' name='password' value={this.state.password || ''} onChange={(event)=> this.handleChanges(event, 'password')} />
+                    <input type='password' className='form-control' placeholder='Enter password' name='password' value={this.state.password || ''} onChange={(event) => this.handleChanges(event, 'password')} />
                   </div>
                   <div className='d-flex justify-content-center'>
-                    <button className='btn btn-dark' type='button' onClick={(event)=> this.handleSubmit(event)}>Login</button>
+                    <button className='btn btn-dark' type='button' onClick={(event) => this.handleSubmit(event)}>Login</button>
                     <button className='btn btn-dark ms-2' type='button'>Cancel</button>
                   </div>
                 </form>

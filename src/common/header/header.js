@@ -3,36 +3,41 @@ import PropTypes from 'prop-types';
 import styles from './header.module.css';
 import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { UserContetxt } from '../../auth/login/login';
 // const Header = () => (
 
 // );
 
 
 class Header extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       checkIsLoggedIn: false
     }
     this.getNewProps = this.getNewProps.bind(this);
+    console.log('props header', props);
+
   }
 
-  getNewProps(e){
+
+  getNewProps(e) {
     // console.log('function as props: ',e);
   }
 
-  static getDerivedStateFromProps(props, state){
+  static getDerivedStateFromProps(props, state) {
     // state.setState(props.isLoggedIn);
     // console.log('getDerived', props, state);
-    return {checkIsLoggedIn : props.isLoggedIn};
+    return { checkIsLoggedIn: props.isLoggedIn };
   }
-  
+
   render() {
+    console.log('header context', this.context);
+
     let conditionalLink = null;
-    if(this.state.checkIsLoggedIn){
+    if (this.state.checkIsLoggedIn) {
       conditionalLink = <Link className="nav-item nav-link" to="/profile">Profile</Link>
-    }else{
+    } else {
       conditionalLink = <Link className="nav-item nav-link" to="/login" onClick={this.getNewProps}>Login</Link>
     }
     return (
@@ -59,6 +64,8 @@ class Header extends React.Component {
     )
   }
 }
+
+Header.contextType = UserContetxt
 
 
 // const Header = (props) => {
@@ -92,7 +99,7 @@ class Header extends React.Component {
 //       <Outlet></Outlet>
 //     </div>
 //   )
-  
+
 // }
 
 Header.propTypes = {};
