@@ -3,6 +3,9 @@ import Layout from '../../common/layout/layout';
 import RatingStars from '../../common/star-rating/rating';
 import { useParams } from 'react-router-dom';
 import { getSingleProductByID } from '../../services/userData';
+import { useSearchParams } from 'react-router-dom';
+import useSWR from "swr";
+import { getSingleProductsFromCosmicAPi } from '../../services/cosmic.service';
 import {
     Magnifier,
     GlassMagnifier,
@@ -16,13 +19,15 @@ import {
 const ProductDetail = (props) => {
     // console.log('ID', productId);
     const [productData, setProductDetails] = useState({});
-    const [isDataLoading, setDataLoadingState] = useState(false);
+    const [isDataLoading, setDataLoadingState] = useState(true);
     const [showRating, setRatingtoShow] = useState(false);
     const [onMobileDevice, setMobileDevice] = useState(false)
     const { productId } = useParams();
+    const [searchParams, setsearchParams] = useSearchParams();
+    const productSlug = searchParams.get('productSlug');
+    // console.log(productDetails);
 
-
-    function getProductDetails() {
+    async function getProductDetails() {
         if (productId) {
             getSingleProductByID(productId).then((res) => {
                 setProductDetails(res.data);
@@ -31,6 +36,11 @@ const ProductDetail = (props) => {
             }).catch((e) => {
                 console.log(e);
             })
+        } else if (productSlug) {
+            getSingleProductsFromCosmicAPi(productSlug).then(res => {
+                setProductDetails(res.objects[0]);
+                setDataLoadingState(false);
+            });
         }
     }
 
@@ -56,23 +66,23 @@ const ProductDetail = (props) => {
                             <div className='col-md-4'>
                                 <SideBySideMagnifier
                                     className="input-position"
-                                    imageSrc={productData['image']}
+                                    imageSrc={productData['image'] || productData['metadata'].image.imgix_url}
                                     imageAlt='product-img'
                                     onImageLoad={() => console.log('loading image')}
                                     onLargeImageLoad={() => console.log('loading large image')}
                                     switchSides={true}
                                     zoomContainerBorder='2px solid #0d6efd'
                                     fillAvailableSpace={false}
-                                    fillGapRight= {10}
+                                    fillGapRight={10}
                                     overlayBackgroundColor='#eaf2ff'
                                 />
                             </div>
                             <div className="product-details pt-4 pt-md-0 ps-3 col-md-8">
-                                <div className="product-categ-badge text-capitalize">{productData['category']}</div>
+                                {productData['category'] && <div className="product-categ-badge text-capitalize">{productData['category'] || ''}</div>}
                                 <div className="content pt-3">
                                     <h5 className="title text-primary">{productData['title']}</h5>
-                                    <p className="detail text-secondary bold">{productData['description']}</p>
-                                    <h6 className="price-detail text-primary">$ {productData['price']} <span className="crossprice ms-1">{((productData['price'] * 0.1) + productData['price']).toFixed(2)}</span></h6>
+                                    {productData['description'] && <p className="detail text-secondary bold">{productData['description'] || ''}</p>}
+                                    <h6 className="price-detail text-primary">Price: $ {productData['price'] || productData['metadata'].price} {productData['price'] && <span className="crossprice ms-1">{((productData['price'] * 0.1) + productData['price']).toFixed(2)}</span>}</h6>
                                     {showRating && <RatingStars ratingcount={productData['rating'].rate} />}
                                 </div>
                             </div>

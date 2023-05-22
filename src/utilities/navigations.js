@@ -41,12 +41,12 @@ export const Navigations = [
         icon: 'bi bi-person-add',
         path: '/addUser'
     },
-    // {
-    //     id: 7,
-    //     name: 'calender',
-    //     icon: 'bi bi-grid',
-    //     path: ''
-    // },
+    {
+        id: 6,
+        name: 'Products from cosmix',
+        icon: 'bi bi-grid',
+        path: '/prductsFromCosmic'
+    },
     // {
     //     id: 8,
     //     name: 'messages',

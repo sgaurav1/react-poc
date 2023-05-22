@@ -12,6 +12,7 @@ import UsersDetail from "./components/user-details/user-detsils";
 import AddNewUser from "./components/add-user/addUser";
 import ProductList from "./components/product-list/productList";
 import ProductDetail from "./components/product-details/productDetails";
+import ProductsFromCosmic from "./components/blogs/blogs";
 export class Routers extends Component {
 
     componentDidMount() {
@@ -34,7 +35,9 @@ export class Routers extends Component {
                         <Route path={`userDetails/:userId`} element={<UsersDetail />}></Route>
                         <Route path='addUser' element={<AddNewUser />}></Route>
                         <Route path='productList' element={<ProductList />}></Route>
+                        <Route path='prductsFromCosmic' element={<ProductsFromCosmic />}></Route>
                         <Route path={`productDetails/:productId`} element={<ProductDetail />}></Route>
+                        <Route path={`productDetails/?`} element={<ProductDetail />}></Route>
                         <Route path="*" element={<NotFound />}></Route>
                     </>}
                     {/* <Route path="posts" element={<Posts />}></Route> */}

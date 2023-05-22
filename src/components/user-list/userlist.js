@@ -79,7 +79,7 @@ export class UserList extends Component {
                 {!this.state.isLoading &&
                     <>
                         <div className="table-responsive mt-2">
-                            <table className="table table -borderless styledata-table text-center">
+                            <table className="table table-borderless styledata-table text-center">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
