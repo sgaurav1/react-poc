@@ -13,6 +13,7 @@ import AddNewUser from "./components/add-user/addUser";
 import ProductList from "./components/product-list/productList";
 import ProductDetail from "./components/product-details/productDetails";
 import ProductsFromCosmic from "./components/blogs/blogs";
+import AddProducts from "./components/blogs/addProduct";
 export class Routers extends Component {
 
     componentDidMount() {
@@ -38,6 +39,9 @@ export class Routers extends Component {
                         <Route path='prductsFromCosmic' element={<ProductsFromCosmic />}></Route>
                         <Route path={`productDetails/:productId`} element={<ProductDetail />}></Route>
                         <Route path={`productDetails/?`} element={<ProductDetail />}></Route>
+                        <Route path='addproduct' element={<AddProducts />}></Route>
+
+                        
                         <Route path="*" element={<NotFound />}></Route>
                     </>}
                     {/* <Route path="posts" element={<Posts />}></Route> */}

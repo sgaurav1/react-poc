@@ -47,6 +47,12 @@ export const Navigations = [
         icon: 'bi bi-grid',
         path: '/prductsFromCosmic'
     },
+    {
+        id: 7,
+        name: 'Add Products',
+        icon: 'bi bi-grid',
+        path: '/addproduct'
+    },
     // {
     //     id: 8,
     //     name: 'messages',
