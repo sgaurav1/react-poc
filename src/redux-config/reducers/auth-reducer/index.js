@@ -24,7 +24,7 @@ function authReducer(state = initialState, action) {
         })
     }
     if (action.type === USER_LOGIN) {
-        localStorage.setItem('userToken', action.payload.token)
+        localStorage.setItem('userToken', action.payload.token);
         return Object.assign({}, state, {
             auth: action.payload,
             isLoggedIn: true,

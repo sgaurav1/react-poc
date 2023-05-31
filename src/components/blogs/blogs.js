@@ -9,6 +9,7 @@ const ProductsFromCosmic = (props) => {
     const { data, error } = useSWR("fetch-products", getProductsFromCosmicAPi); // Use SWR hook
     if (!data) return <div>Loading...</div>;
     const posts = data.objects;
+    
     return (
         <Layout>
             <table className="table table-striped text-center">
@@ -37,3 +38,7 @@ const ProductsFromCosmic = (props) => {
 }
 
 export default ProductsFromCosmic;
+
+function useState() {
+    throw new Error("Function not implemented.");
+}

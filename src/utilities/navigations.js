@@ -43,7 +43,7 @@ export const Navigations = [
     },
     {
         id: 6,
-        name: 'Products from cosmix',
+        name: 'Products from cosmic',
         icon: 'bi bi-grid',
         path: '/prductsFromCosmic'
     },
