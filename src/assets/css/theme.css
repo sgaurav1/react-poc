@@ -453,3 +453,7 @@ label {
         margin-left: 5px;
     }
 }
+
+.btnwidth{
+    max-width: 200px;
+}

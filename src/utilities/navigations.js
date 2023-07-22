@@ -53,6 +53,12 @@ export const Navigations = [
         icon: 'bi bi-grid',
         path: '/addproduct'
     },
+    {
+        id: 8,
+        name: 'Twinit Access',
+        icon: 'bi bi-grid',
+        path: '/accessKeygeneration'
+    },
     // {
     //     id: 8,
     //     name: 'messages',

@@ -14,6 +14,7 @@ import ProductList from "./components/product-list/productList";
 import ProductDetail from "./components/product-details/productDetails";
 import ProductsFromCosmic from "./components/blogs/blogs";
 import AddProducts from "./components/blogs/addProduct";
+import AccessKeyGeneration from './components/twinit-environment/access-key-generation/AccesKeyGeneration';
 export class Routers extends Component {
 
     componentDidMount() {
@@ -40,7 +41,7 @@ export class Routers extends Component {
                         <Route path={`productDetails/:productId`} element={<ProductDetail />}></Route>
                         <Route path={`productDetails/?`} element={<ProductDetail />}></Route>
                         <Route path='addproduct' element={<AddProducts />}></Route>
-
+                        <Route path="accessKeyGeneration" element={<AccessKeyGeneration />}></Route>
                         
                         <Route path="*" element={<NotFound />}></Route>
                     </>}
