@@ -15,10 +15,19 @@ import ProductDetail from "./components/product-details/productDetails";
 import ProductsFromCosmic from "./components/blogs/blogs";
 import AddProducts from "./components/blogs/addProduct";
 import AccessKeyGeneration from './components/twinit-environment/access-key-generation/AccesKeyGeneration';
+import TelemetryCollection from "./components/twinit-environment/telemetry-collection/TelemetryCollection";
 export class Routers extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            twinitAccessToken: null
+        }
+    }
 
     componentDidMount() {
         this.props.checkIsUserLogedIn();
+
     }
 
     render() {
@@ -41,7 +50,8 @@ export class Routers extends Component {
                         <Route path={`productDetails/:productId`} element={<ProductDetail />}></Route>
                         <Route path={`productDetails/?`} element={<ProductDetail />}></Route>
                         <Route path='addproduct' element={<AddProducts />}></Route>
-                        <Route path="accessKeyGeneration" element={<AccessKeyGeneration />}></Route>
+                        <Route path="app" element={<AccessKeyGeneration />}></Route>
+                        <Route path="dataSources" element={<TelemetryCollection />}></Route>
                         
                         <Route path="*" element={<NotFound />}></Route>
                     </>}

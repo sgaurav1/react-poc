@@ -2,15 +2,28 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../../../common/layout/layout';
 import Form from 'react-bootstrap/Form';
 import { twinitConfigs } from '../../../utilities/twinit.config';
-import { generateAccessTokenForUnknownUser,ImplicitLoginWithTwinitEnvironment } from '../../../services/twinit.service';
+import { generateAccessTokenForUnknownUser, ImplicitLoginWithTwinitEnvironment } from '../../../services/twinit.service';
+import { useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 const AccessKeyGeneration = () => {
 
     const [isMember, setMemberStatus] = useState(false);
     const [twinitAccessToken, setAccessToken] = useState('');
+    const [searchParams] = useSearchParams();
+    const location = useLocation();
 
     useEffect(() => {
         (async () => {
-            if(localStorage.getItem('twinitAccessToken') && localStorage.getItem('twinitAccessToken') != '' && localStorage.getItem('twinitAccessToken') !== undefined && localStorage.getItem('twinitAccessToken') !== null){
+            // console.log('searchparams',location.hash.split((/=|&/)));
+            const url = location.hash.replace(/#/g, '').split(/=|&/);
+            if (location.hash && url[1]) {
+                console.log('url', url);
+                localStorage.setItem('twinitAccessToken', url[1]);
+                // const urlObject = 
+            }
+            if (localStorage.getItem('twinitAccessToken') && localStorage.getItem('twinitAccessToken') != '' && localStorage.getItem('twinitAccessToken') !== undefined && localStorage.getItem('twinitAccessToken') !== null) {
                 setAccessToken(localStorage.getItem('twinitAccessToken'));
             }
         })();

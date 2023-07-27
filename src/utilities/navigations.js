@@ -57,7 +57,13 @@ export const Navigations = [
         id: 8,
         name: 'Twinit Access',
         icon: 'bi bi-grid',
-        path: '/accessKeygeneration'
+        path: '/app'
+    },
+    {
+        id: 9,
+        name: 'Data Sources',
+        icon: 'bi bi-grid',
+        path: '/dataSources'
     },
     // {
     //     id: 8,
