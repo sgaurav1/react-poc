@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect';
 import Profile from './Profile';
 
 describe('<Profile />', () => {
-  test('it should mount', () => {
+  test('it should mount the component', () => {
     render(<Profile />);
     
     const profile = screen.getByTestId('Profile');
